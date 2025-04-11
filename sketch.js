@@ -27,10 +27,10 @@ function actualizarRebanadas() {
 }
 function draw() {
   background(220);
-  
-   circle(xPizza1, yPizza1, diametroPizza);
-   circle(xPizza2, yPizza2, diametroPizza);
-   circle(xPizza3, yPizza3, diametroPizza);
+
+  puntoMedio(diametroPizza /2, xPizza1, yPizza1);
+  puntoMedio(diametroPizza /2, xPizza2, yPizza2);
+  puntoMedio(diametroPizza /2, xPizza3, yPizza3);
   
   
   //FOR ALGORITMO PP
@@ -176,5 +176,32 @@ function lineVertical(x0, y0, x1, y1) {
       p += 2 * dx;
     }
   }
+}
+
+function puntoMedio(r,xCentral,yCentral){
+  let x = 0;
+  let y = r;
+  
+  let p = 5 / 4 - r; 
+  
+  for(let k = 0; x < y; k++){
+    if(p < 0){
+      x = x + 1;
+      p = p + (2 * x) + 1;
+    }else{
+      x = x + 1;
+      y = y - 1;
+      p = p + (2 * x) + 1 - (2 * y);
+    }
+    point(xCentral + x, yCentral + y);
+    point(xCentral + y, yCentral + x);
+    point(xCentral + y, yCentral - x);
+    point(xCentral + x, yCentral - y);
+    point(xCentral - x, yCentral - y);
+    point(xCentral - y, yCentral - x);
+    point(xCentral - y, yCentral + x);
+    point(xCentral - x, yCentral + y);
+  }
+  
 }
 
